@@ -1,0 +1,1 @@
+import * as proto from "./proto";

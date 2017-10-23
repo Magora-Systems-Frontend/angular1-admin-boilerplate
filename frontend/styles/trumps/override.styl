@@ -1,0 +1,48 @@
+.content-wrapper {
+  min-height: calc(100% - 50px);
+  height: calc(100% - 50px);
+  overflow-y: auto;
+  @media(max-width: 767px){
+    min-height: calc(100% - 100px);
+    height: calc(100% - 100px);
+  }
+}
+
+.box-header > .box-tools {
+  top: 16px;
+}
+
+.box{
+  @media(max-width: 767px){
+    overflow-x: auto;
+  }
+}
+
+#loading-bar .bar {
+  background: white;
+}
+
+.modal.modal-full{
+  .modal-dialog{
+    width: calc(100% - 60px);
+    margin: 30px;
+  }
+  .modal-body{
+    height: calc(100% - 124px);
+    img{
+      position: absolute;
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+.modal-dialog{
+  max-height: calc(100% - 70px);
+  overflow: auto;
+}

@@ -1,0 +1,33 @@
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+out
+gen
+# Created by .ignore support plugin (hsz.mobi)
+bower_components
+node_modules
+public
+*.csv
+*.dat
+*.iml
+*.log
+*.out
+*.pid
+*.seed
+*.sublime-*
+*.swo
+*.swp
+*.tgz
+*.xml
+.DS_Store
+.project
+.strong-pm
+coverage
+npm-debug.log
+application/public
+.tmp
+!/client/component/projects-list/projects-list.jsx
+/package-lock.json
+package-lock.json

@@ -1,0 +1,26 @@
+.skin-green.sidebar-mini.wrapper(ng-class="{'sidebar-collapse': $ctrl.isCollapsed, 'sidebar-open': !$ctrl.isCollapsed}")
+  header.main-header
+    a.logo(ui-sref="app.main")
+      span.logo-mini
+        | AN
+      span.logo-lg
+        | App Name
+
+    nav.navbar.navbar-static-top
+      a.sidebar-toggle(href='#' role='button' ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      .navbar-custom-menu
+        ul.nav.navbar-nav
+          li
+            a.dropdown-toggle(href='#' ng-click="$ctrl.logout()")
+              | logout
+
+
+  aside.main-sidebar
+    section.sidebar
+      sidebar-menu(title="Navigation")
+
+  .content-wrapper(ui-view="")

@@ -1,0 +1,18 @@
+li.treeview.sidebar-menu-item(ng-class="{active: $ctrl.isActive(node)}")
+  a(ng-click="$ctrl.goToState(node); $event.stopPropagation();" href="javascript:void(0);")
+    i.fa(
+      ng-if="node.icon"
+      class="{{'fa-' + node.icon}}"
+    )
+    span {{node.text}}
+    span.pull-right-container
+      i.fa.pull-right(
+        ng-if="node.items && node.items.length > 0"
+        ng-class="{'fa-angle-down': $ctrl.isOpen, 'fa-angle-left': !$ctrl.isOpen}"
+        ng-click="$ctrl.isOpen = !$ctrl.isOpen; $event.stopPropagation();"
+      )
+  ul.treeview-menu(
+    ng-if="node.items && node.items.length > 0"
+    ng-class="{'menu-open': $ctrl.isOpen}"
+  )
+    sidebar-menu-item(ng-repeat="node in node.items")

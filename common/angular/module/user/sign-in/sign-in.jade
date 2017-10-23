@@ -1,0 +1,29 @@
+form(name='loginForm' method="post" ng-submit="$ctrl.signIn()")
+  .form-group.has-feedback(ng-class="{'has-error': $ctrl.validation}")
+    input.form-control(
+      name='username'
+      ng-model='$ctrl.form.login'
+      ng-blur='$ctrl.validateEmail()'
+      ng-change='$ctrl.validateOnChange()'
+      required=''
+      placeholder='Email'
+    )
+    span.validation-message {{$ctrl.validation}}
+    span.glyphicon.glyphicon-envelope.form-control-feedback
+  .form-group.has-feedback
+    input.form-control(
+      type='password'
+      name='password'
+      ng-model='$ctrl.form.password'
+      required=''
+      placeholder='Password'
+    )
+    span.glyphicon.glyphicon-lock.form-control-feedback
+  .row
+    .col-xs-8
+    .col-xs-4
+      button(
+        type="submit"
+        class="btn btn-primary btn-block btn-flat"
+        ng-disabled="loginForm.$invalid"
+      ) Sign In

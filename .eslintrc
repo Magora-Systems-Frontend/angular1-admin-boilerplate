@@ -1,0 +1,15 @@
+{
+    "extends": [
+        "airbnb/base",
+        "angular"
+    ],
+    "plugins": [
+        "angular"
+    ],
+    "rules": {
+        "indent": [2, "tab"],
+        "angular/no-service-method": 0,
+        "angular/controller-name": 0,
+        "comma-dangle": ["error", "never"]
+    }
+}

@@ -1,0 +1,50 @@
+modal.modal-full.fade(visible="$ctrl.visibilityPopup")
+	modal-header(
+		title="Set place coordinates"
+		on-close="$ctrl.visibilityPopup=false;"
+	)
+	modal-body
+		.gmap__map()
+			ui-gmap-google-map(
+				center='$ctrl.map.center'
+				zoom='$ctrl.map.zoom'
+				options='$ctrl.map.options'
+				events="$ctrl.map.mapEvents"
+			)
+				ui-gmap-marker(
+					ng-if="$ctrl.map.marker.coords.latitude && $ctrl.map.marker.coords.longitude"
+					coords="$ctrl.map.marker.coords"
+					options="$ctrl.map.marker.options"
+					idKey="$ctrl.map.marker.id"
+				)
+
+
+	modal-footer
+		.row
+			.col-xs-12
+				button.btn.btn-primary.pull-right(
+					type="button"
+					ng-click="$ctrl.close()"
+					style="width: 80px;"
+				)
+					| close
+
+.coords-picker
+	input(
+		form-validator="{{$ctrl.validators || ''}}"
+		type="hidden"
+		name="lat"
+		ng-required="{{$ctrl.isRequired}}"
+		ng-model="$ctrl.map.marker.coords.latitude"
+	)
+	input(
+		type="hidden"
+		name="lng"
+		ng-required="{{$ctrl.isRequired}}"
+		ng-model="$ctrl.map.marker.coords.longitude"
+	)
+	button.btn.btn-dropbox.btn-upload(
+		type="button"
+		ng-click="$ctrl.openPopup()"
+	)
+		| Set

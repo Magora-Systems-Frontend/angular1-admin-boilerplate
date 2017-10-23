@@ -1,0 +1,74 @@
+table(
+  ng-table-dynamic="$ctrl.tableParams with $ctrl.categoryColumns"
+  class="table table-bordered table-hover table-condensed editable-table drag-table"
+  ng-form="tableForm"
+  show-filter="false"
+)
+  colgroup
+    col(width="80%")
+    col(width="20%")
+  tbody(dnd-list="$ctrl.tableParams.data" dnd-inserted="$ctrl.inserted('inserted at', index, external, type)")
+    tr(
+      ng-repeat="row in $data"
+      row-edit-helper='row'
+      ng-form="rowForm"
+      dnd-draggable="row"
+      dnd-moved="$data.splice($index, 1)"
+      dnd-effect-allowed="move"
+    )
+      td(
+        ng-repeat="col in $columns"
+        ng-form="{{col.field}}"
+        height="42"
+      )
+        span(
+          ng-if="col.dataType !== 'command' && !row.isEditing"
+          class="editable-text"
+        )
+          | {{row[col.field]}}
+
+        .controls(
+          ng-if="col.dataType !== 'command' && row.isEditing"
+          ng-class="rowForm[col.field].$invalid && rowForm[col.field].$dirty ? 'has-error' : ''"
+          ng-switch='col.dataType'
+        )
+          input.editable-input.form-control.input-sm.pull-right(
+            ng-switch-default=''
+            type='text'
+            name='{{col.field}}'
+            ng-model='row[col.field]'
+            required=''
+          )
+          input.editable-input.form-control.input-sm.pull-right(
+            ng-switch-when='number'
+            type='number'
+            name='{{col.field}}'
+            ng-model='row[col.field]'
+            required=''
+          )
+
+        div(ng-if="col.dataType === 'command'")
+          button.btn.btn-primary.btn-sm.pull-right(
+            ng-click='$ctrl.save(row, rowForm)'
+            ng-if='row.isEditing'
+            ng-disabled='rowForm.$pristine || rowForm.$invalid'
+          )
+            span.glyphicon.glyphicon-ok
+          button.btn.btn-default.btn-sm.pull-right(
+            ng-click='$ctrl.cancel(row, rowForm)'
+            ng-if='row.isEditing'
+          )
+            span.glyphicon.glyphicon-remove
+          button.btn.btn-default.btn-sm.pull-right(
+            ng-click='row.isEditing = true'
+            ng-if='!row.isEditing'
+          )
+            span.glyphicon.glyphicon-pencil
+          button.btn.btn-danger.btn-sm.pull-right(
+            ng-click='$ctrl.del(row)'
+            ng-if='!row.isEditing'
+          )
+            span.glyphicon.glyphicon-trash
+    tr.dndPlaceholder
+      td(colspan="2" height="42")
+        | Drop here

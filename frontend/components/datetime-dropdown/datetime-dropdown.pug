@@ -1,0 +1,10 @@
+.datetime-dropdown(
+  ng-click="$ctrl.isOpen = true;"
+  tabindex="-1"
+  ng-blur="$ctrl.isOpen = false;"
+  ng-active="$ctrl.isOpen = true;"
+)
+  p.datetime-dropdown__text
+    | {{$ctrl.getValue()}}
+  .datetime-dropdown__widget(ng-class="{'datetime-dropdown__widget--visible': $ctrl.isOpen}")
+    datetimepicker(data-ng-model="$ctrl.config.date" data-datetimepicker-config="$ctrl.datetimepickerConfig")

@@ -1,0 +1,54 @@
+user-sign-in
+  width 100%;
+  display block
+
+  .user-sign-in
+    &__login-btn
+      height 50px
+      border-radius 25px
+      font-weight 600
+      font-size 16px
+
+      .md-ripple-container
+        border-radius 25px
+
+    &__checkbox
+      color #fff
+
+      &:not(.md-checked)
+        .md-icon
+          border-color #fff
+
+      &.md-checked
+        .md-icon
+          background #fff
+          &::after
+            border-color #5c6bc0
+
+  md-input-container
+    margin 0
+
+    &.md-input-focused, &.md-input-has-value
+      label
+        display none
+
+    &.md-input-invalid, &.md-input-focused
+      .md-input
+        border none
+
+      label
+        color #ccc
+
+    label:not(.md-container-ignore)
+      text-align center
+      bottom 90%
+
+    .md-input
+      background #fff
+      border-radius: 25px
+      text-align center
+      height 50px
+      line-height 50px
+
+.has-error .validation-message
+  color: #a94442;

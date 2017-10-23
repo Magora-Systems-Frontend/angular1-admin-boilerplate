@@ -1,0 +1,11 @@
+label.btn.btn-dropbox(ng-class="{'disabled': $ctrl.isLoading}")
+  span.fa.fa-spinner.fa-spin(ng-if="$ctrl.isLoading")
+  | &nbsp;{{$ctrl.label}}
+  input(
+    type="file"
+    accept="image/jpeg,image/jpg,image/png"
+    style="display: none",
+    name="{{$ctrl.name}}"
+    ng-disabled="$ctrl.isLoading"
+    ng-required="$ctrl.isRequired"
+  )

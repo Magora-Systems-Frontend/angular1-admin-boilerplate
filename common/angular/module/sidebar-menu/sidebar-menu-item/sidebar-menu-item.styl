@@ -1,0 +1,15 @@
+class = sidebar-menu-item
+
+.{class}{
+  .treeview-menu {
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    display block;
+    max-height: 0;
+
+    &.menu-open {
+      max-height 800px;
+      transition: max-height 0.5s ease-in;
+    }
+  }
+}
