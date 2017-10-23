@@ -1,16 +1,16 @@
 # App admin
 
-##install
+## install
 ```
 npm i 
 ```
 
-##Prod build:
+## Prod build:
 ```
 npm run build 
 ```
 
-##Develop:
+## Develop:
 ```
 npm start
 ```
