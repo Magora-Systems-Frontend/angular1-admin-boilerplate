@@ -106,7 +106,8 @@ if (NODE_ENV === "development") {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, '../common/templates/layout_dev.pug')
+      template: path.join(__dirname, '../common/templates/layout_dev.pug'),
+      inject: false
     }),
     new webpack.NoEmitOnErrorsPlugin(),
     new LiveReloadPlugin()
